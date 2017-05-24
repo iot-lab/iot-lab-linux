@@ -96,13 +96,13 @@ static struct mtd_partition varam35_nand_partitions[] = {
 	{
 		.name		= "U-Boot Env",
 		.offset		= MTDPART_OFS_APPEND,   /* offset : 0x240000 */
-		.size		= 2*(NAND_BLOCK_SIZE)   /* size   : 0x040000 */
+		.size		= 2*(NAND_BLOCK_SIZE),  /* size   : 0x040000 */
                 .mask_flags	= 0,  // MTD_WRITEABLE
 	},
 	{
 		.name		= "Kernel",
 		.offset		= MTDPART_OFS_APPEND,   /* offset : 0x280000 */
-		.size		= 40*(NAND_BLOCK_SIZE)  /* size   : 0x500000 */
+		.size		= 40*(NAND_BLOCK_SIZE), /* size   : 0x500000 */
                 .mask_flags	= 0,  // MTD_WRITEABLE
 	},
 	{
