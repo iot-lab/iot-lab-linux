@@ -213,8 +213,8 @@ config MACH_OVERO
 	default y
 	select OMAP_PACKAGE_CBB
 
-config MACH_OMAP3517EVM
-	bool "OMAP3517/ AM3517 EVM board"
+config MACH_VARAM35
+	bool "HIKOB OMAP3517/AM3505 Variscite board"
 	depends on ARCH_OMAP3
 	default y
 	select OMAP_PACKAGE_CBB

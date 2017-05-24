@@ -918,8 +918,10 @@ static int __init omap_device_late_init(void)
 {
 	bus_for_each_dev(&platform_bus_type, NULL, NULL, omap_device_late_idle);
 
+	/* FIXME:HKB ok ...
 	WARN(!of_have_populated_dt(),
 		"legacy booting deprecated, please update to boot with .dts\n");
+	*/
 
 	return 0;
 }
