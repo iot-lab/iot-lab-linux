@@ -79,37 +79,47 @@ static int __init varam35_i2c_init(void)
 
 #define NAND_BLOCK_SIZE        SZ_128K
 
+/*
+ * Nand permissions
+ *     .mask_flags: removes permissions
+ */
+#ifdef CONFIG_VARAM35_MTD_WRITEABLE
+#define VARAM35_NAND_MODE_MASK 0
+#else
+#define VARAM35_NAND_MODE_MASK MTD_WRITEABLE
+#endif
+
 static struct mtd_partition varam35_nand_partitions[] = {
 	/* All the partition sizes are listed in terms of NAND block size */
 	{
 		.name		= "X-Loader",
 		.offset		= 0,                    /* offset : O        */
 		.size		= 4*(NAND_BLOCK_SIZE),  /* size   : 512kB    */
-		.mask_flags	= 0,  // MTD_WRITEABLE
+		.mask_flags	= VARAM35_NAND_MODE_MASK,
 	},
 	{
 		.name		= "U-Boot",
 		.offset		= MTDPART_OFS_APPEND,   /* offset : 0x80000  */
 		.size		= 14*(NAND_BLOCK_SIZE), /* size   : 0x1c0000 */
-		.mask_flags	= 0,  // MTD_WRITEABLE
+		.mask_flags	= VARAM35_NAND_MODE_MASK,
 	},
 	{
 		.name		= "U-Boot Env",
 		.offset		= MTDPART_OFS_APPEND,   /* offset : 0x240000 */
 		.size		= 2*(NAND_BLOCK_SIZE),  /* size   : 0x040000 */
-                .mask_flags	= 0,  // MTD_WRITEABLE
+                .mask_flags	= VARAM35_NAND_MODE_MASK,
 	},
 	{
 		.name		= "Kernel",
 		.offset		= MTDPART_OFS_APPEND,   /* offset : 0x280000 */
 		.size		= 40*(NAND_BLOCK_SIZE), /* size   : 0x500000 */
-                .mask_flags	= 0,  // MTD_WRITEABLE
+                .mask_flags	= VARAM35_NAND_MODE_MASK,
 	},
 	{
 		.name		= "File System",        /* offset : 0x780000 */
 		.offset		= MTDPART_OFS_APPEND,
 		.size		= MTDPART_SIZ_FULL,
-                .mask_flags	= 0,  // MTD_WRITEABLE
+                .mask_flags	= VARAM35_NAND_MODE_MASK,
 	},
 };
 
