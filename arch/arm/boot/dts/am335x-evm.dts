@@ -13,6 +13,15 @@
 	model = "TI AM335x EVM";
 	compatible = "ti,am335x-evm", "ti,am33xx";
 
+	pps-gen {
+		pinctrl-names = "default";
+		pinctrl-0 = <&pps_gen_pins>;
+		compatible = "pps-gen-gpio";
+		pps-gen-gpio = <&gpio1 35 GPIO_ACTIVE_HIGH>;
+		default-state = "off";
+	}
+
+
 	cpus {
 		cpu@0 {
 			cpu0-supply = <&vdd1_reg>;
@@ -154,6 +163,12 @@
 			0x154 (PIN_INPUT_PULLDOWN | MUX_MODE7)	/* spi0_d0.gpio0_3 */
 		>;
 	};
+
+  pps_gen_pins: pinmux_pps_gen_pins {
+  	pinctrl-single,pins = <
+  		0x33 (PIN_OUTPUT_PULLDOWN | MUX_MODE7) /* uart3_txd.txd */
+  	>;
+  };
 
 	i2c0_pins: pinmux_i2c0_pins {
 		pinctrl-single,pins = <
