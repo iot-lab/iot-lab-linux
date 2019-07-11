@@ -18,4 +18,4 @@ config PPS_GENERATOR_GPIO
 	help
 	  If you say yes here you get support for a PPS signal generator which
 	  utilizes a GPIO pin specified in the Device Tree. It uses hrtimers to
-    precisely control the signal.
+	  precisely control the signal.
