@@ -13,15 +13,6 @@
 	model = "TI AM335x EVM";
 	compatible = "ti,am335x-evm", "ti,am33xx";
 
-	pps-gen {
-		pinctrl-names = "default";
-		pinctrl-0 = <&pps_gen_pins>;
-		compatible = "pps-gen-gpio";
-		pps-gen-gpio = <&gpio1 35 GPIO_ACTIVE_HIGH>;
-		default-state = "off";
-	}
-
-
 	cpus {
 		cpu@0 {
 			cpu0-supply = <&vdd1_reg>;

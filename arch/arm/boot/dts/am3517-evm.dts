@@ -13,6 +13,14 @@
 	model = "TI AM3517 EVM (AM3517/05 TMDSEVM3517)";
 	compatible = "ti,am3517-evm", "ti,am3517", "ti,omap3";
 
+	pps-gen {
+		pinctrl-names = "default";
+		pinctrl-0 = <&pps_gen_pins>;
+		compatible = "pps-gen-gpio";
+		pps-gen-gpio = <&gpio1 35 GPIO_ACTIVE_HIGH>;
+		default-state = "off";
+	}
+
 	memory {
 		device_type = "memory";
 		reg = <0x80000000 0x10000000>; /* 256 MB */
